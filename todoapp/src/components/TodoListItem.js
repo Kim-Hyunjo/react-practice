@@ -1,13 +1,13 @@
 import React from "react";
 import './TodoListItem.css';
 
-const TodoListItem = (({ todo }) => {
-    const { text, checked } = todo;
+const TodoListItem = (({ todo, onRemove, onToggle }) => {
+    const { id, text, checked } = todo;
     return (
         <div>
-            <span className={checked ? 'checkbox--selected' : 'checkbox'}></span>
+            <span className={'checkbox ' + (checked ? 'checkbox--selected' : '')} onClick={() => { onToggle(id) }} ></span>
             <span>{text}</span>
-            <button type="submit">❌</button>
+            <button type="submit" onClick={() => onRemove(id)}>❌</button>
         </div>
     );
 })
